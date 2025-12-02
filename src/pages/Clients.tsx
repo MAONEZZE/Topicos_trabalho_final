@@ -249,13 +249,11 @@ const Clients = () => {
           <Form
             form={editForm}
             layout="vertical"
-            onFinish={handleUpdateClient}
-          >
+            onFinish={handleUpdateClient}>
             <Form.Item
               label="Name"
               name="name"
-              rules={[{ required: true, message: 'Please enter client name' }]}
-            >
+              rules={[{ required: true, message: 'Please enter client name' }]}>
               <Input placeholder="Enter client name" />
             </Form.Item>
 
@@ -265,16 +263,15 @@ const Clients = () => {
               rules={[
                 { required: true, message: 'Please enter email' },
                 { type: 'email', message: 'Please enter a valid email' }
-              ]}
-            >
+              ]}>
               <Input placeholder="client@example.com" />
             </Form.Item>
 
             <Form.Item
               label="Phone"
               name="phone"
-              rules={[{ required: true, message: 'Please enter phone number' }]}
-            >
+              rules={[{ required: true, message: 'Please enter phone number' }]}>
+
               <Input placeholder="+1 234 567 8900" />
             </Form.Item>
 

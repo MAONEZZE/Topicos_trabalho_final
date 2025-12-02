@@ -1,114 +1,103 @@
-# 🛍️ Online Store - React & Ant Design
+# 🛍️ Loja Online - React e Ant Design
 
-A modern e-commerce application built with React, TypeScript, Ant Design, and Tailwind CSS. This project integrates product management, client management, and shopping cart functionalities with a beautiful dark/light theme toggle.
-
----
-
-## 📋 Table of Contents
-
-- [Features](#-features)
-- [Technologies](#-technologies)
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
-- [Functionalities](#-functionalities)
-- [API Integration](#-api-integration)
+Uma aplicação de e-commerce moderna construída com React, TypeScript, Ant Design e Tailwind CSS. Este projeto integra gerenciamento de produtos, gerenciamento de clientes e funcionalidades de carrinho de compras com um belo alternador de tema claro/escuro.
 
 ---
 
-## ✨ Features
+## ✨ Recursos
 
-### 🏠 HomePage
-- Displays top 5 products from Fake Store API
-- Responsive product cards with images and prices
-- Quick navigation to product details
+### 🏠 Página Inicial (HomePage)
+- Exibe os 5 principais produtos da Fake Store API
+- Cards de produtos responsivos com imagens e preços
+- Navegação rápida para detalhes do produto
 
-### 🛒 Products Page
-- Complete product listing with search functionality
-- Add, edit, and delete products
-- Product registration with form validation
-- Shopping cart integration ("Buy" button)
-- Data persistence using LocalStorage
-- Edit drawer for updating product details
-- Delete confirmation with Popconfirm
+### 🛒 Página de Produtos
+- Listagem completa de produtos com funcionalidade de busca
+- Adicionar, editar e excluir produtos
+- Cadastro de produto com validação de formulário
+- Integração com carrinho de compras (Botão "Comprar")
+- Persistência de dados usando LocalStorage
+- Drawer (painel lateral) de edição para atualizar detalhes do produto
+- Confirmação de exclusão com Popconfirm
 
-### 👥 Clients Page
-- Client listing with table view
-- Add new clients via modal
-- Edit existing clients with drawer
-- Delete clients with confirmation
-- LocalStorage persistence
-- Form validation
+### 👥 Página de Clientes
+- Listagem de clientes com visualização em tabela
+- Adicionar novos clientes via modal
+- Editar clientes existentes com drawer
+- Excluir clientes com confirmação
+- Persistência no LocalStorage
+- Validação de formulário
 
-### 🛒 Shopping Cart
-- Add/remove products
-- View quantity and total price
-- Clear cart functionality
-- Checkout process with confirmation
-- Persistent cart data (LocalStorage)
-- Cart badge showing item count
+### 🛒 Carrinho de Compras
+- Adicionar/remover produtos
+- Visualizar quantidade e preço total
+- Funcionalidade de limpar carrinho
+- Processo de checkout com confirmação
+- Dados do carrinho persistentes (LocalStorage)
+- Badge no carrinho mostrando a contagem de itens
 
-### 🎨 Theme Support
-- Light and dark mode toggle
-- Consistent theming across all pages
-- Ant Design integration with custom theme tokens
-- Smooth theme transitions
-
----
-
-## 🚀 Technologies
-
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool and dev server
-- **Ant Design** - UI component library
-- **Tailwind CSS** - Utility-first CSS framework
-- **shadcn/ui** - Additional UI components
-- **React Router** - Client-side routing
-- **React Context API** - State management (Cart)
-- **LocalStorage** - Data persistence
-- **Fake Store API** - Product data source
+### 🎨 Suporte a Temas
+- Alternância entre modo claro e escuro
+- Tematização consistente em todas as páginas
+- Integração Ant Design com tokens de tema personalizados
+- Transições de tema suaves
 
 ---
 
-## 🏁 Getting Started
+## 🚀 Tecnologias
 
-### Prerequisites
+- **React 18** - Biblioteca de UI
+- **TypeScript** - Segurança de tipos (Type safety)
+- **Vite** - Ferramenta de build e servidor de desenvolvimento
+- **Ant Design** - Biblioteca de componentes de UI
+- **Tailwind CSS** - Framework CSS utility-first
+- **shadcn/ui** - Componentes de UI adicionais
+- **React Router** - Roteamento client-side
+- **React Context API** - Gerenciamento de estado (Carrinho)
+- **LocalStorage** - Persistência de dados
+- **Fake Store API** - Fonte de dados de produtos
 
-- Node.js (v16 or higher)
-- npm or yarn package manager
+---
 
-### Installation
+## 🏁 Começando
 
-1. **Clone the repository**
+### Pré-requisitos
+
+- Node.js (v16 ou superior)
+- Gerenciador de pacotes npm ou yarn
+
+### Instalação
+
+1. **Clone o repositório**
    ```bash
-   git clone https://github.com/MAONEZZE/Topicos_trabalho_final.git
+   git clone [https://github.com/MAONEZZE/Topicos_trabalho_final.git](https://github.com/MAONEZZE/Topicos_trabalho_final.git)
    cd Topicos_trabalho_final
    ```
 
-2. **Install dependencies**
+2. **Instale as dependências**
    ```bash
    npm install
    ```
 
-3. **Start the development server**
+3. **Inicie o servidor de desenvolvimento**
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+4. **Abra seu navegador**
    ```
-   Navigate to: http://localhost:8080
+   Navegue para: http://localhost:8080
    ```
 
-### Build for Production
+### Build para Produção
 
 ```bash
 npm run build
 ```
 
-The production-ready files will be in the `dist` folder.
+Os arquivos prontos para produção estarão na pasta `dist`.
 
-### Preview Production Build
+### Pré-visualizar Build de Produção
 
 ```bash
 npm run preview
@@ -116,80 +105,80 @@ npm run preview
 
 ---
 
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
 ```
 src/
 ├── components/
-│   ├── Header.tsx              # Navigation header with cart and theme toggle
-│   ├── ProductCard.tsx         # Reusable product card component
-│   └── ui/                     # shadcn/ui components
+│   ├── Header.tsx              # Cabeçalho de navegação com carrinho e alternador de tema
+│   ├── ProductCard.tsx         # Componente de card de produto reutilizável
+│   └── ui/                     # Componentes shadcn/ui
 ├── contexts/
-│   └── CartContext.tsx         # Shopping cart state management
+│   └── CartContext.tsx         # Gerenciamento de estado do carrinho de compras
 ├── pages/
-│   ├── Index.tsx               # Homepage (top 5 products)
-│   ├── Products.tsx            # Product management page
-│   ├── Clients.tsx             # Client management page
-│   ├── Cart.tsx                # Shopping cart page
-│   ├── Account.tsx             # User account page
-│   └── NotFound.tsx            # 404 page
+│   ├── Index.tsx               # Página inicial (top 5 produtos)
+│   ├── Products.tsx            # Página de gerenciamento de produtos
+│   ├── Clients.tsx             # Página de gerenciamento de clientes
+│   ├── Cart.tsx                # Página do carrinho de compras
+│   ├── Account.tsx             # Página de conta do usuário
+│   └── NotFound.tsx            # Página 404
 ├── lib/
-│   └── utils.ts                # Utility functions
-├── App.tsx                     # Main app component with routing
-├── main.tsx                    # Application entry point
-└── index.css                   # Global styles and theme variables
+│   └── utils.ts                # Funções utilitárias
+├── App.tsx                     # Componente principal do app com roteamento
+├── main.tsx                    # Ponto de entrada da aplicação
+└── index.css                   # Estilos globais e variáveis de tema
 ```
 
 ---
 
-## 🎯 Functionalities
+## 🎯 Funcionalidades
 
-### Product Management
-- **List Products**: View all products in a responsive grid
-- **Add Product**: Register new products with name, price, description, image
-- **Edit Product**: Update existing product details via drawer
-- **Delete Product**: Remove products with confirmation dialog
-- **Search Products**: Filter products by name
-- **Buy Product**: Add products to shopping cart
+### Gerenciamento de Produtos
+- **Listar Produtos**: Ver todos os produtos em um grid responsivo
+- **Adicionar Produto**: Registrar novos produtos com nome, preço, descrição, imagem
+- **Editar Produto**: Atualizar detalhes de produtos existentes via drawer
+- **Excluir Produto**: Remover produtos com diálogo de confirmação
+- **Buscar Produtos**: Filtrar produtos por nome
+- **Comprar Produto**: Adicionar produtos ao carrinho de compras
 
-### Client Management
-- **List Clients**: View all clients in a table
-- **Add Client**: Register new clients with name, email, phone
-- **Edit Client**: Update client information via drawer
-- **Delete Client**: Remove clients with confirmation
+### Gerenciamento de Clientes
+- **Listar Clientes**: Ver todos os clientes em uma tabela
+- **Adicionar Cliente**: Registrar novos clientes com nome, email, telefone
+- **Editar Cliente**: Atualizar informações do cliente via drawer
+- **Excluir Cliente**: Remover clientes com confirmação
 
-### Shopping Cart
-- **Add to Cart**: Add products from product listings
-- **View Cart**: See all items with quantities and prices
-- **Remove Items**: Delete individual products from cart
-- **Clear Cart**: Empty entire cart
-- **Checkout**: Complete purchase with confirmation modal
-- **Cart Badge**: Real-time item count in header
+### Carrinho de Compras
+- **Adicionar ao Carrinho**: Adicionar produtos a partir da listagem de produtos
+- **Ver Carrinho**: Ver todos os itens com quantidades e preços
+- **Remover Itens**: Excluir produtos individuais do carrinho
+- **Limpar Carrinho**: Esvaziar o carrinho inteiro
+- **Checkout**: Completar compra com modal de confirmação
+- **Badge do Carrinho**: Contagem de itens em tempo real no cabeçalho
 
-### Theme Toggle
-- **Light/Dark Mode**: Switch between themes
-- **Persistent Theme**: Saves preference in LocalStorage
-- **Consistent Styling**: All components adapt to theme
+### Alternância de Tema
+- **Modo Claro/Escuro**: Alternar entre temas
+- **Tema Persistente**: Salva preferência no LocalStorage
+- **Estilização Consistente**: Todos os componentes se adaptam ao tema
 
 ---
 
-## 🌐 API Integration
+## 🌐 Integração com API
 
-This project uses the **Fake Store API** for product data:
+Este projeto usa a **Fake Store API** para dados de produtos:
 
 - **Endpoint**: `https://fakestoreapi.com/products?limit=5`
-- **Usage**: Fetches top 5 products for the homepage
-- **Fallback**: Returns mock data if API is unavailable
+- **Uso**: Busca os 5 principais produtos para a página inicial
+- **Fallback**: Retorna dados mockados (simulados) se a API estiver indisponível
 
 ---
 
-## 💾 Data Persistence
+## 💾 Persistência de Dados
 
-All data is stored in **LocalStorage**:
+Todos os dados são armazenados no **LocalStorage**:
 
-- `products` - Product listings
-- `clients` - Client information
-- `cart` - Shopping cart items
-- `theme` - Theme preference (dark/light)
+- `products` - Listagens de produtos
+- `clients` - Informações de clientes
+- `cart` - Itens do carrinho de compras
+- `theme` - Preferência de tema (escuro/claro)
 
 ---
