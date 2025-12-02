@@ -4,7 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
-import { CartProvider } from "./contexts/CartContext";
+import { Provider } from "react-redux";
+import { store } from "./store";
 import { useEffect, useState } from "react";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
@@ -33,20 +34,20 @@ const App = () => {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ConfigProvider
-        theme={{
-          algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
-          token: {
-            colorBgContainer: isDark ? 'hsl(240 10% 3.9%)' : 'hsl(0 0% 100%)',
-            colorBgElevated: isDark ? 'hsl(240 10% 3.9%)' : 'hsl(0 0% 100%)',
-            colorText: isDark ? 'hsl(0 0% 98%)' : 'hsl(240 10% 3.9%)',
-            colorBorder: isDark ? 'hsl(240 3.7% 15.9%)' : 'hsl(240 5.9% 90%)',
-          },
-        }}
-      >
-        <TooltipProvider>
-          <CartProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <ConfigProvider
+          theme={{
+            algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
+            token: {
+              colorBgContainer: isDark ? 'hsl(240 10% 3.9%)' : 'hsl(0 0% 100%)',
+              colorBgElevated: isDark ? 'hsl(240 10% 3.9%)' : 'hsl(0 0% 100%)',
+              colorText: isDark ? 'hsl(0 0% 98%)' : 'hsl(240 10% 3.9%)',
+              colorBorder: isDark ? 'hsl(240 3.7% 15.9%)' : 'hsl(240 5.9% 90%)',
+            },
+          }}
+        >
+          <TooltipProvider>
             <Toaster />
             <Sonner />
             <BrowserRouter>
@@ -59,10 +60,10 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
-          </CartProvider>
-        </TooltipProvider>
-      </ConfigProvider>
-    </QueryClientProvider>
+          </TooltipProvider>
+        </ConfigProvider>
+      </QueryClientProvider>
+    </Provider>
   );
 };
 

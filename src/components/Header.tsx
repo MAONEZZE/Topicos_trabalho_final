@@ -3,12 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Package, Moon, Sun } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { useCart } from '@/contexts/CartContext';
+import { useAppSelector } from '@/store/hooks';
+import { selectTotalItems } from '@/store/slices/cartSlice';
 import { useState, useEffect } from 'react';
 
 const Header = () => {
   const location = useLocation();
-  const { getTotalItems } = useCart();
+  const totalItems = useAppSelector(selectTotalItems);
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved === 'dark';
@@ -80,9 +81,9 @@ const Header = () => {
           <Link to="/cart">
             <Button variant="default" size="icon" className="relative">
               <ShoppingCartOutlined className="text-lg" />
-              {getTotalItems() > 0 && (
+              {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs font-medium text-accent-foreground">
-                  {getTotalItems()}
+                  {totalItems}
                 </span>
               )}
             </Button>

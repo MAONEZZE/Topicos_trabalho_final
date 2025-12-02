@@ -1,14 +1,24 @@
 import { Layout, Typography, Card, Button, Empty, Modal, InputNumber } from 'antd';
 import { ShoppingCartOutlined, DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import Header from '@/components/Header';
-import { useCart } from '@/contexts/CartContext';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { 
+  selectCartItems, 
+  selectTotalAmount, 
+  removeFromCart, 
+  clearCart, 
+  addToCart,
+  updateQuantity 
+} from '@/store/slices/cartSlice';
 import { useState } from 'react';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
 const Cart = () => {
-  const { cartItems, removeFromCart, clearCart, getTotalAmount, addToCart } = useCart();
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector(selectCartItems);
+  const totalAmount = useAppSelector(selectTotalAmount);
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
 
   const handleCheckout = () => {
@@ -16,15 +26,13 @@ const Cart = () => {
   };
 
   const handleConfirmCheckout = () => {
-    clearCart();
+    dispatch(clearCart());
     setCheckoutModalOpen(false);
     Modal.success({
       title: 'Purchase Complete!',
       content: 'Thank you for your purchase. Your order has been confirmed.',
     });
   };
-
-  const totalAmount = getTotalAmount();
 
   return (
     <Layout className="min-h-screen">
@@ -71,7 +79,7 @@ const Cart = () => {
                           danger 
                           size="small" 
                           icon={<DeleteOutlined />}
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => dispatch(removeFromCart(item.id))}
                         >
                           Remove
                         </Button>
@@ -92,7 +100,7 @@ const Cart = () => {
                   <Button 
                     danger 
                     size="large" 
-                    onClick={clearCart}
+                    onClick={() => dispatch(clearCart())}
                   >
                     Clear Cart
                   </Button>

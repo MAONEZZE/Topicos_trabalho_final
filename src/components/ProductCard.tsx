@@ -2,7 +2,8 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { EyeFilled, ShoppingCartOutlined } from '@ant-design/icons';
 import { notification } from 'antd';
-import { useCart } from '@/contexts/CartContext';
+import { useAppDispatch } from '@/store/hooks';
+import { addToCart } from '@/store/slices/cartSlice';
 
 interface Product {
   id: number;
@@ -18,7 +19,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const { addToCart } = useCart();
+  const dispatch = useAppDispatch();
 
   const handleViewDetails = () => {
     notification.error({
@@ -30,7 +31,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   const handleBuy = () => {
-    addToCart(product);
+    dispatch(addToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.image,
+    }));
     notification.success({
       message: 'Added to Cart',
       description: `${product.title} has been added to your cart.`,
