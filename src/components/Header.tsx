@@ -1,7 +1,7 @@
-import { ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { ShopFilled, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { Package, Moon, Sun } from 'lucide-react';
+import { Package, Moon, Sun, ShoppingBag, ShoppingBagIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '@/store/hooks';
 import { selectTotalItems } from '@/store/slices/cartSlice';
@@ -32,7 +32,7 @@ const Header = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary">
-            <Package className="w-6 h-6 text-primary-foreground" />
+            <ShoppingBag className="w-6 h-6 text-primary-foreground" />
           </div>
           <span className="text-xl font-bold text-foreground">Tópicos Shop</span>
         </div>
