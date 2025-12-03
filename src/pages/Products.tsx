@@ -28,30 +28,30 @@ const Products = () => {
 
   // Load products from API and LocalStorage on mount
   useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        // Get API products
-        const response = await fetch('https://fakestoreapi.com/products');
-        const apiProducts = await response.json();
-
-        // Get LocalStorage products
-        const localProducts = JSON.parse(localStorage.getItem('customProducts') || '[]');
-
-        // Combine both sources
-        setProducts([...apiProducts, ...localProducts]);
-      } catch (error) {
-        notification.error({
-          message: 'Error',
-          description: 'Failed to load products',
-          placement: 'topRight',
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
     loadProducts();
   }, []);
+
+  const loadProducts = async () => {
+    try {
+      // Get API products
+      const response = await fetch('https://fakestoreapi.com/products');
+      const apiProducts = await response.json();
+
+      // Get LocalStorage products
+      const localProducts = JSON.parse(localStorage.getItem('customProducts') || '[]');
+
+      // Combine both sources
+      setProducts([...apiProducts, ...localProducts]);
+    } catch (error) {
+      notification.error({
+        message: 'Error',
+        description: 'Failed to load products',
+        placement: 'topRight',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Save custom products to LocalStorage whenever products change
   useEffect(() => {

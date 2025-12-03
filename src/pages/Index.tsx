@@ -16,20 +16,20 @@ const Index = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('https://fakestoreapi.com/products?limit=5');
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('https://fakestoreapi.com/products?limit=5');
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchProducts();
   }, []);
 
@@ -43,7 +43,7 @@ const Index = () => {
         {/* Hero Section */}
         <section className="text-center mb-16 space-y-4">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground animate-in fade-in slide-in-from-bottom-4 duration-700">
-            Welcome to the Shop
+            Welcome to the Tópicos Shop
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
             Discover our curated selection of premium products
@@ -75,7 +75,7 @@ const Index = () => {
 
       <footer className="border-t border-border mt-20 py-8">
         <div className="container px-4 text-center text-muted-foreground">
-          <p>&copy; 2025 Online Shop. All rights reserved.</p>
+          <p>&copy; 2025 Tópicos Shop. All rights reserved.</p>
         </div>
       </footer>
     </div>
